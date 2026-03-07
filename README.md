@@ -1,127 +1,194 @@
-# template_go_hexagonal
+# Go Hexagonal Architecture Template
 
-Professional Go backend starter kit using hexagonal architecture, prepared for fast local onboarding and production-friendly evolution.
+![Go Hexagonal Architecture](https://via.placeholder.com/1200x400)
 
+Production-ready backend template built with:
 
-## Purpose
+* Go
+* Gin
+* PostgreSQL
+* Hexagonal Architecture (Ports & Adapters)
 
-This template provides a clean foundation for REST APIs in Go with strict boundaries between domain, application, infrastructure, and presentation layers.
+Designed for developers who want **clean, scalable and maintainable backend systems from day one.**
 
-## Architecture Summary
+---
 
-- **domain**: entities and ports (business contracts)
-- **application**: use cases/services orchestrating business rules
-- **infrastructure**: adapters (database/repository implementations)
-- **presentation**: HTTP handlers, middleware, responses, routing, DI container
+# ⭐ If this project helps you, please star the repo
 
-The architecture guard script (`scripts/check_architecture.sh`) enforces these boundaries.
+Buy the **PRO version** here:
 
-## Prerequisites
+👉 https://YOUR_GUMROAD_LINK
 
-- Go 1.22+
-- PostgreSQL (for runtime persistence)
-- [Air](https://github.com/air-verse/air) for live reload in dev mode
+---
 
-Install Air:
+# Why this template?
 
-```bash
-go install github.com/air-verse/air@latest
+Most Go backend projects start messy.
+
+Controllers talk directly to databases.
+Business logic spreads everywhere.
+Scaling becomes painful.
+
+This template provides a **clean architecture foundation** that keeps your backend organized and maintainable.
+
+Key principles used:
+
+* Hexagonal Architecture
+* Dependency Injection
+* Domain Driven Design principles
+* Clean separation of layers
+* Testable architecture
+* AI-ready development workflow
+
+---
+
+# What is included in the FREE version
+
+This repository contains the **basic architecture structure**.
+
+Included:
+
+✔ Project folder structure
+✔ Example domain entity
+✔ Example use case
+✔ Infrastructure repository example
+✔ Basic HTTP server with Gin
+✔ Simple CRUD example
+✔ Architecture documentation
+
+This version is intended to **help you understand the architecture**.
+
+---
+
+# Project Structure
+
+```
+cmd/
+internal/
+
+domain/
+entities/
+ports/
+
+application/
+usecases/
+
+infrastructure/
+database/
+repositories/
+
+presentation/
+http/
+handlers/
+
+config/
 ```
 
-## Environment Setup
+The project follows **Hexagonal Architecture (Ports & Adapters)**.
 
-1. Copy environment template:
+Dependencies always point inward.
 
-```bash
-make up
+---
+
+# Architecture Flow
+
+```
+HTTP Request
+    ↓
+Controller (Presentation)
+    ↓
+Use Case (Application)
+    ↓
+Domain Entities
+    ↓
+Repository Port
+    ↓
+Database Adapter
 ```
 
-2. Adjust `.env` values if needed (especially `POSTGRES_DSN`).
+This ensures that **business rules never depend on frameworks or databases**.
 
-## Local Development Flow
+---
 
-### Run in development mode (live reload)
+# Other Versions
 
-```bash
-make dev
-```
-
-Or directly:
-
-```bash
-air
-```
-
-### Run normally (no live reload)
-
-```bash
-make run
-```
-
-### Run tests
-
-```bash
-make test
-```
-
-### Run architecture checks
-
-```bash
-make architecture-check
-```
-
-### Run safe lint checks
-
-```bash
-make lint-safe
-```
-
-
-## Main Developer Commands
-
-- `make help` — list all commands
-- `make up` — bootstrap `.env`
-- `make dev` — live reload with Air
-- `make run` — run API once
-- `make test` — run all tests
-- `make test-cover` — test coverage summary
-- `make fmt` — format Go code
-- `make tidy` — tidy dependencies
-- `make lint-safe` — gofmt/go vet/go test checks
-- `make architecture-check` — hexagonal boundary checks
-- `make build` — build binary in `./bin`
-- `make clean` — remove generated artifacts
-
-## Healthcheck
-
-The API exposes:
-
-- `GET /health`
-
-Expected response:
-
-```json
-{
-  "errors": [],
-  "data": {
-    "status": "ok"
-  }
-}
-```
-
-
-
-
-
-
-⭐ PRO VERSION
+The **Other versions** expand this template into a complete backend starter kit.
 
 Includes:
 
-✔ Feature generators
-✔ Architecture validation
-✔ AI development rules
-✔ Full production structure
-✔ Advanced examples
+✔ Feature generator (create modules automatically)
+✔ Architecture validation rules
+✔ Production-ready folder structure
+✔ Authentication example
+✔ Environment configuration
+✔ More real-world modules
+✔ Extended documentation
 
-https://lramos.gumroad.com/l/hexagonagoia
+Get the Other versions here:
+
+👉 https://lramos.gumroad.com/l/hexagonagoia
+
+---
+
+# Who is this template for?
+
+This project is ideal for:
+
+* Go backend developers
+* Developers learning clean architecture
+* Developers building scalable APIs
+* Teams creating microservices
+* Developers using AI coding assistants
+
+---
+
+# Getting Started
+
+Clone the repository
+
+```
+git clone https://github.com/lrcliche/template_go_hexagonal_free
+```
+
+Run the project
+
+```
+go run cmd/main.go
+```
+
+---
+
+# License
+
+MIT License.
+
+This repository contains the **free educational version**.
+
+The **production-ready version is available here**:
+
+👉  https://lramos.gumroad.com/l/hexagonagoia
+
+---
+
+# Support the project
+
+If you find this project useful:
+
+⭐ Star the repository
+🍋 Buy the PRO version
+💬 Share feedback
+
+---
+
+# Author
+
+Luis Ramos
+
+Senior Backend Developer
+
+Specialized in:
+
+* Go backend systems
+* Hexagonal architecture
+* Payment integrations
+* Scalable backend platforms

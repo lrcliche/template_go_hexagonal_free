@@ -1,6 +1,7 @@
-# template_go_hexagonal_v1
+# template_go_hexagonal
 
 Professional Go backend starter kit using hexagonal architecture, prepared for fast local onboarding and production-friendly evolution.
+
 
 ## Purpose
 
@@ -75,6 +76,7 @@ make architecture-check
 make lint-safe
 ```
 
+
 ## Main Developer Commands
 
 - `make help` — list all commands
@@ -106,3 +108,20 @@ Expected response:
   }
 }
 ```
+
+
+
+
+
+
+⭐ PRO VERSION
+
+Includes:
+
+✔ Feature generators
+✔ Architecture validation
+✔ AI development rules
+✔ Full production structure
+✔ Advanced examples
+
+https://lramos.gumroad.com/l/hexagonagoia

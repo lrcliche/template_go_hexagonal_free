@@ -1,90 +1,194 @@
-# Go Hexagonal Architecture Template (Free Community Version)
+# Go Hexagonal Architecture Template
 
-This repository is the **free basic/community edition** of a Go backend template based on Hexagonal Architecture.
+![Go Hexagonal Architecture](https://via.placeholder.com/1200x400)
 
-It is designed to:
+Production-ready backend template built with:
 
-- demonstrate architecture quality and folder organization
-- provide a clean starter skeleton for study and experimentation
-- showcase the coding style used in the premium version
+* Go
+* Gin
+* PostgreSQL
+* Hexagonal Architecture (Ports & Adapters)
 
-> The full production-ready implementation is available in the paid Gumroad version.
+Designed for developers who want **clean, scalable and maintainable backend systems from day one.**
 
-## What this free version includes
+---
 
-- clean hexagonal folder structure
-- semantic English package names
-- one sample domain entity (`Product`)
-- one sample repository port (`ProductRepository`)
-- one sample application service skeleton (`ProductService`)
-- one sample HTTP handler skeleton (`ProductHandler`)
-- one sample router with healthcheck + demo products route
-- `.env.example`
-- architecture overview document (`docs/architecture_overview.md`)
+# ⭐ If this project helps you, please star the repo
 
-## What is intentionally simplified in this free version
+Buy the **PRO version** here:
 
-To protect premium value, this repository is intentionally **non-functional for core business flows**:
+👉 https://YOUR_GUMROAD_LINK
 
-- no full CRUD implementation
-- no real PostgreSQL repository logic
-- no advanced dependency injection/container setup
-- no architecture validation scripts
-- no AI governance / AI workflow / feature generation docs
-- no feature generation scripts/tooling
-- no premium logging/tracing toolkit
-- no advanced automated tests
+---
 
-Demo adapters return explicit "not implemented" style responses where applicable.
+# Why this template?
 
-## Upgrade to Premium
+Most Go backend projects start messy.
 
-The premium version includes:
+Controllers talk directly to databases.
+Business logic spreads everywhere.
+Scaling becomes painful.
 
-- full CRUD API implementation
-- PostgreSQL repository implementation
-- architecture validation scripts
-- AI architecture governance docs
-- feature generators and automation scripts
-- advanced developer tooling and tests
+This template provides a **clean architecture foundation** that keeps your backend organized and maintainable.
 
-👉 Get the premium template on Gumroad (replace this line with your product URL).
+Key principles used:
 
-## Quick Start
+* Hexagonal Architecture
+* Dependency Injection
+* Domain Driven Design principles
+* Clean separation of layers
+* Testable architecture
+* AI-ready development workflow
 
-```bash
-cp .env.example .env
-go run ./cmd/api
+---
+
+# What is included in the FREE version
+
+This repository contains the **basic architecture structure**.
+
+Included:
+
+✔ Project folder structure
+✔ Example domain entity
+✔ Example use case
+✔ Infrastructure repository example
+✔ Basic HTTP server with Gin
+✔ Simple CRUD example
+✔ Architecture documentation
+
+This version is intended to **help you understand the architecture**.
+
+---
+
+# Project Structure
+
 ```
+cmd/
+internal/
 
-Then open:
-
-- `GET /health`
-- `GET /api/v1/products` (demo endpoint; returns not implemented in free version)
-
-## Project Structure
-
-```text
-cmd/api
-application/
-  config/
-  services/
 domain/
-  entities/
-  ports/
+entities/
+ports/
+
+application/
+usecases/
+
 infrastructure/
-  repositories/
+database/
+repositories/
+
 presentation/
-  container/
-  errors/
-  handlers/
-  middleware/
-  responses/
-  routes/
-  server/
-docs/
+http/
+handlers/
+
+config/
 ```
 
-## License
+The project follows **Hexagonal Architecture (Ports & Adapters)**.
 
-MIT
+Dependencies always point inward.
+
+---
+
+# Architecture Flow
+
+```
+HTTP Request
+    ↓
+Controller (Presentation)
+    ↓
+Use Case (Application)
+    ↓
+Domain Entities
+    ↓
+Repository Port
+    ↓
+Database Adapter
+```
+
+This ensures that **business rules never depend on frameworks or databases**.
+
+---
+
+# Other Versions
+
+The **Other versions** expand this template into a complete backend starter kit.
+
+Includes:
+
+✔ Feature generator (create modules automatically)
+✔ Architecture validation rules
+✔ Production-ready folder structure
+✔ Authentication example
+✔ Environment configuration
+✔ More real-world modules
+✔ Extended documentation
+
+Get the Other versions here:
+
+👉 https://lramos.gumroad.com/l/hexagonagoia
+
+---
+
+# Who is this template for?
+
+This project is ideal for:
+
+* Go backend developers
+* Developers learning clean architecture
+* Developers building scalable APIs
+* Teams creating microservices
+* Developers using AI coding assistants
+
+---
+
+# Getting Started
+
+Clone the repository
+
+```
+git clone https://github.com/lrcliche/template_go_hexagonal_free
+```
+
+Run the project
+
+```
+go run cmd/main.go
+```
+
+---
+
+# License
+
+MIT License.
+
+This repository contains the **free educational version**.
+
+The **production-ready version is available here**:
+
+👉  https://lramos.gumroad.com/l/hexagonagoia
+
+---
+
+# Support the project
+
+If you find this project useful:
+
+⭐ Star the repository
+🍋 Buy the PRO version
+💬 Share feedback
+
+---
+
+# Author
+
+Luis Ramos
+
+Senior Backend Developer
+
+Specialized in:
+
+* Go backend systems
+* Hexagonal architecture
+* Payment integrations
+* Scalable backend platforms

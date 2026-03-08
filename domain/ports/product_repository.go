@@ -6,10 +6,8 @@ import (
 	"template-go-hexagonal/domain/entities"
 )
 
+// ProductRepository is a sample output port kept in the free version to show
+// how application services depend on abstractions.
 type ProductRepository interface {
-	Create(ctx context.Context, product *entities.Product) error
 	List(ctx context.Context) ([]entities.Product, error)
-	GetByID(ctx context.Context, id string) (*entities.Product, error)
-	Update(ctx context.Context, product *entities.Product) error
-	Delete(ctx context.Context, id string) error
 }

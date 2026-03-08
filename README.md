@@ -1,108 +1,90 @@
-# template_go_hexagonal_v1
+# Go Hexagonal Architecture Template (Free Community Version)
 
-Professional Go backend starter kit using hexagonal architecture, prepared for fast local onboarding and production-friendly evolution.
+This repository is the **free basic/community edition** of a Go backend template based on Hexagonal Architecture.
 
-## Purpose
+It is designed to:
 
-This template provides a clean foundation for REST APIs in Go with strict boundaries between domain, application, infrastructure, and presentation layers.
+- demonstrate architecture quality and folder organization
+- provide a clean starter skeleton for study and experimentation
+- showcase the coding style used in the premium version
 
-## Architecture Summary
+> The full production-ready implementation is available in the paid Gumroad version.
 
-- **domain**: entities and ports (business contracts)
-- **application**: use cases/services orchestrating business rules
-- **infrastructure**: adapters (database/repository implementations)
-- **presentation**: HTTP handlers, middleware, responses, routing, DI container
+## What this free version includes
 
-The architecture guard script (`scripts/check_architecture.sh`) enforces these boundaries.
+- clean hexagonal folder structure
+- semantic English package names
+- one sample domain entity (`Product`)
+- one sample repository port (`ProductRepository`)
+- one sample application service skeleton (`ProductService`)
+- one sample HTTP handler skeleton (`ProductHandler`)
+- one sample router with healthcheck + demo products route
+- `.env.example`
+- architecture overview document (`docs/architecture_overview.md`)
 
-## Prerequisites
+## What is intentionally simplified in this free version
 
-- Go 1.22+
-- PostgreSQL (for runtime persistence)
-- [Air](https://github.com/air-verse/air) for live reload in dev mode
+To protect premium value, this repository is intentionally **non-functional for core business flows**:
 
-Install Air:
+- no full CRUD implementation
+- no real PostgreSQL repository logic
+- no advanced dependency injection/container setup
+- no architecture validation scripts
+- no AI governance / AI workflow / feature generation docs
+- no feature generation scripts/tooling
+- no premium logging/tracing toolkit
+- no advanced automated tests
 
-```bash
-go install github.com/air-verse/air@latest
-```
+Demo adapters return explicit "not implemented" style responses where applicable.
 
-## Environment Setup
+## Upgrade to Premium
 
-1. Copy environment template:
+The premium version includes:
 
-```bash
-make up
-```
+- full CRUD API implementation
+- PostgreSQL repository implementation
+- architecture validation scripts
+- AI architecture governance docs
+- feature generators and automation scripts
+- advanced developer tooling and tests
 
-2. Adjust `.env` values if needed (especially `POSTGRES_DSN`).
+👉 Get the premium template on Gumroad (replace this line with your product URL).
 
-## Local Development Flow
-
-### Run in development mode (live reload)
-
-```bash
-make dev
-```
-
-Or directly:
-
-```bash
-air
-```
-
-### Run normally (no live reload)
-
-```bash
-make run
-```
-
-### Run tests
+## Quick Start
 
 ```bash
-make test
+cp .env.example .env
+go run ./cmd/api
 ```
 
-### Run architecture checks
-
-```bash
-make architecture-check
-```
-
-### Run safe lint checks
-
-```bash
-make lint-safe
-```
-
-## Main Developer Commands
-
-- `make help` — list all commands
-- `make up` — bootstrap `.env`
-- `make dev` — live reload with Air
-- `make run` — run API once
-- `make test` — run all tests
-- `make test-cover` — test coverage summary
-- `make fmt` — format Go code
-- `make tidy` — tidy dependencies
-- `make lint-safe` — gofmt/go vet/go test checks
-- `make architecture-check` — hexagonal boundary checks
-- `make build` — build binary in `./bin`
-- `make clean` — remove generated artifacts
-
-## Healthcheck
-
-The API exposes:
+Then open:
 
 - `GET /health`
+- `GET /api/v1/products` (demo endpoint; returns not implemented in free version)
 
-Expected response:
+## Project Structure
 
-```json
-{
-  "errors": [],
-  "data": {
-    "status": "ok"
-  }
-}
+```text
+cmd/api
+application/
+  config/
+  services/
+domain/
+  entities/
+  ports/
+infrastructure/
+  repositories/
+presentation/
+  container/
+  errors/
+  handlers/
+  middleware/
+  responses/
+  routes/
+  server/
+docs/
 ```
+
+## License
+
+MIT

@@ -4,16 +4,13 @@ import (
 	"errors"
 	"net/http"
 
-	"template-go-hexagonal/domain/entities"
 	"template-go-hexagonal/domain/ports"
 )
 
 func Map(err error) AppError {
 	switch {
-	case errors.Is(err, ports.ErrProductNotFound):
-		return New(http.StatusNotFound, "product-not-found", "Product not found")
-	case errors.Is(err, entities.ErrInvalidProductName), errors.Is(err, entities.ErrInvalidProductPrice):
-		return New(http.StatusUnprocessableEntity, "validation-error", err.Error())
+	case errors.Is(err, ports.ErrNotImplemented):
+		return New(http.StatusNotImplemented, "not-implemented", "This endpoint is a demo in the free version")
 	default:
 		return New(http.StatusInternalServerError, "internal-server-error", "Internal Error")
 	}
@@ -21,8 +18,4 @@ func Map(err error) AppError {
 
 func BadRequest(message string) AppError {
 	return New(http.StatusBadRequest, "bad-request", message)
-}
-
-func Conflict(code, message string) AppError {
-	return New(http.StatusConflict, code, message)
 }

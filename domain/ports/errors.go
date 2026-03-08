@@ -3,5 +3,5 @@ package ports
 import "errors"
 
 var (
-	ErrProductNotFound = errors.New("product not found")
+	ErrNotImplemented = errors.New("not implemented in free version")
 )

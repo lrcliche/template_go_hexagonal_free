@@ -13,27 +13,19 @@ type Config struct {
 	HTTPPort            string
 	ReadTimeoutSeconds  int
 	WriteTimeoutSeconds int
-	PostgresDSN         string
 }
 
 func MustLoad() Config {
-	err := godotenv.Load()
-	if err != nil {
+	if err := godotenv.Load(); err != nil {
 		log.Println("No .env file found")
 	}
-	cfg := Config{
+
+	return Config{
 		AppEnv:              getEnv("APP_ENV", "development"),
 		HTTPPort:            getEnv("HTTP_PORT", "8080"),
 		ReadTimeoutSeconds:  getEnvAsInt("READ_TIMEOUT_SECONDS", 10),
 		WriteTimeoutSeconds: getEnvAsInt("WRITE_TIMEOUT_SECONDS", 10),
-		PostgresDSN:         getEnv("POSTGRES_DSN", "postgres://postgres:postgres@localhost:5432/template_hexagonal?sslmode=disable"),
 	}
-
-	if cfg.PostgresDSN == "" {
-		log.Fatal("POSTGRES_DSN is required")
-	}
-
-	return cfg
 }
 
 func getEnv(key, fallback string) string {

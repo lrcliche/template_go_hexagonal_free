@@ -18,16 +18,11 @@ import (
 const shutdownTimeout = 10 * time.Second
 
 type Server struct {
-	container  *container.Container
 	httpServer *http.Server
 }
 
-func NewServer(ctx context.Context, cfg config.Config) (*Server, error) {
-	appContainer, err := container.New(ctx, cfg)
-	if err != nil {
-		return nil, err
-	}
-
+func NewServer(_ context.Context, cfg config.Config) (*Server, error) {
+	appContainer := container.New()
 	engine := routes.New(appContainer)
 
 	httpServer := &http.Server{
@@ -39,12 +34,10 @@ func NewServer(ctx context.Context, cfg config.Config) (*Server, error) {
 		IdleTimeout:       60 * time.Second,
 	}
 
-	return &Server{container: appContainer, httpServer: httpServer}, nil
+	return &Server{httpServer: httpServer}, nil
 }
 
 func (s *Server) Run() error {
-	defer s.Close()
-
 	log.Printf("[BOOT] operation=start-server message=server running on http://localhost%s", s.httpServer.Addr)
 
 	listenErr := make(chan error, 1)
@@ -62,10 +55,7 @@ func (s *Server) Run() error {
 
 	select {
 	case err := <-listenErr:
-		if err != nil {
-			return err
-		}
-		return nil
+		return err
 	case <-stopSignal:
 	}
 
@@ -82,10 +72,4 @@ func (s *Server) Run() error {
 
 	log.Printf("[BOOT] operation=shutdown message=server stopped")
 	return nil
-}
-
-func (s *Server) Close() {
-	if s.container != nil {
-		s.container.Close()
-	}
 }
